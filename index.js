@@ -9,7 +9,6 @@ app.listen(port, () => {
   console.log("Server has been started");
 });
 
-
 function byField(field) {
   return (a, b) => a[field] > b[field] ? 1 : -1;
 }
