@@ -1,6 +1,7 @@
 const express = require('express');
 let requireDate = require('./src/bd/animeLib.json');
 const fs = require('fs');
+const { Console } = require('console');
 requireDate = require('./src/bd/tempLib.json');
 const app = express();
 const port = 3000;
@@ -17,6 +18,8 @@ function byField(field) {
 
 app.get('/getSearched/:value', (req, res) => {
   let parse = JSON.parse(req.params.value);
+
+  //console.log(`Request received: Substring: ${parse.searchField} , Tags: ${parse.tags} , Favorite ${parse.favs}`);
 
   //Функция проверяет есть ли все заданные пользователем теги в проверяемом тайтле
   const searchAllTags = (searchTags, titleTags) => {
@@ -49,11 +52,12 @@ app.get('/getSearched/:value', (req, res) => {
       : requireDate;
 
   res.send(resultArray);
+  //console.log('List of titles sent.')
 });
 
 app.get('/getTitleById/:id', (req, res) => {
   res.send(requireDate[req.params.id]);
-  console.log(`Был отправлен объект: ${requireDate[req.params.id].name}`);
+  console.log(`Sent title: ${requireDate[req.params.id].name}`);
 });
 
 app.get('/getAllTitles', (req, res) => {
@@ -89,6 +93,7 @@ app.get('/setFavoriteById/:value', (req, res) => {
       });
       requireDate = require('./src/bd/tempLib.json');
       res.send(title);
+      console.log(`[${title.name}] favorite is set to [${parsed.favorites}]`);
     }
   }
 });
