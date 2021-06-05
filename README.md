@@ -1,6 +1,6 @@
 # HVServer
 
-Простейший сервер в одном файле для работы [веб-приложения](https://github.com/NM5Reimu/HViewer-App).
+Простейший сервер в одном файле для работы [вот этого](https://github.com/NM5Reimu/HViewer-App) веб-приложения.
 
 Для разработки использовался *Express.js*
 
